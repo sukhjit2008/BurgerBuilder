@@ -1,0 +1,16 @@
+.Header {
+    background-color: #e0e0e0;
+    color: #212121;
+    font-family: inherit;
+    font-weight: 400;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    z-index: 40;
+    width: 100%;
+    padding: 1rem 3rem;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+}

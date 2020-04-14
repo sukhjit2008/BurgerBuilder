@@ -1,0 +1,15 @@
+.Logo__box {
+    width: 5rem;
+}
+
+.Logo {
+    width: 100%;
+}
+
+@media(max-width:37.5em) {
+    .Logo__box {
+        margin-left: auto;
+    }
+
+
+}

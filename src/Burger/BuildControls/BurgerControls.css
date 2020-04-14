@@ -1,0 +1,94 @@
+.BuildControls {
+    background-color: #424242;
+    height: 60vh;
+    max-width: 50rem;
+    margin: 0rem auto;
+    box-shadow: 0px 1rem 2rem rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    border-radius: 3px;
+    text-align: center;
+}
+
+.BuildControls__price,
+.OrderSummery__amount {
+    font-size: 1.8rem;
+    font-weight: 300;
+    justify-self: center;
+    width: 100%;
+    margin-left: .5rem;
+}
+
+.BuildControls__amount {
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    justify-self: center;
+    width: 100%;
+
+}
+
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+
+}
+
+.checkout_button {
+    width: 10rem;
+    padding: 1rem;
+    border: none;
+    font-family: inherit;
+    font-weight: bold;
+    font-size: 1.3rem;
+    border-radius: 3px;
+    cursor: pointer;
+    background-color: #ffab40;
+    color: #212121;
+    display: inline-block;
+    transition: all .2s;
+    margin-top: 1.5rem;
+    display: inline-block;
+    justify-self: center;
+    margin-right: 4.3rem;
+    margin-bottom: 2rem;
+}
+
+
+.checkout_button:not(:disabled) {
+    animation: popOut .3s ease-out;
+}
+
+.checkout_button:hover {
+    box-shadow: 0px 1rem 2rem rgba(0, 0, 0, 0.1);
+    transform: translateY(-3px);
+    background-color: #ff9100;
+
+
+}
+
+.checkout_button:active {
+    box-shadow: 0px .5rem 1rem rgba(0, 0, 0, 0.1);
+    transform: translateY(-1px);
+
+}
+
+.checkout_button:focus {
+    outline: none;
+}
+
+@keyframes popOut {
+    0% {
+        transform: scale(1)
+    }
+
+    60% {
+        transform: scale(1.1)
+    }
+
+    100% {
+        transform: scale(1.2)
+    }
+}

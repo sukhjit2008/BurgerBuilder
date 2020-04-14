@@ -1,0 +1,51 @@
+.Menu__box {
+    background-color: transparent;
+    position: absolute;
+    width: 3rem;
+    height: 3rem;
+    z-index: 70;
+    cursor: pointer;
+    display: none;
+}
+
+.Menu {
+    position: relative;
+    width: 3rem;
+    height: .2rem;
+    background-color: #212121;
+    z-index: 70;
+    cursor: pointer;
+    top: 1.5rem;
+}
+
+
+@media(max-width:37.5em) {
+    .Menu__box {
+        display: inline;
+    }
+
+
+
+
+}
+
+
+
+.Menu::before {
+    content: '';
+    position: absolute;
+    width: 3rem;
+    height: .2rem;
+    top: .8rem;
+    background-color: #212121;
+    transition: all .2s;
+}
+
+.Menu::after {
+    content: '';
+    position: absolute;
+    width: 3rem;
+    height: .2rem;
+    top: -.8rem;
+    background-color: #212121;
+}

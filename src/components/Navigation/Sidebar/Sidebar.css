@@ -1,0 +1,36 @@
+.SideBar__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.Sidebar {
+    position: absolute;
+    z-index: 150;
+    width: 80%;
+    height: 123.5vh;
+    background-color: #e0e0e0;
+    color: #212121;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    transition: all .2s cubic-bezier(0.83, 0, 0.17, 1);
+    ;
+    cursor: pointer;
+}
+
+.SideBar__closeButton {
+    line-height: 1;
+    text-align: end;
+    position: relative;
+    top: 3rem;
+    right: 3rem;
+    font-size: 2.5rem;
+    transition: all .2s;
+}

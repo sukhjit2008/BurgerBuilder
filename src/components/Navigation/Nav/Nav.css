@@ -1,0 +1,31 @@
+.Nav__list {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+}
+
+.Nav__item {
+    margin-right: 2rem;
+}
+
+.Nav__link,
+.SideBar__link {
+    color: #212121;
+    text-decoration: none;
+    color: #212121;
+
+}
+
+@media(max-width:37.5em) {
+
+
+    .Nav__list {
+        display: none;
+
+    }
+
+
+
+}

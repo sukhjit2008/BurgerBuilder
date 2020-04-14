@@ -1,0 +1,57 @@
+.Control {
+    display: flex;
+
+    padding: .5rem 3rem;
+
+
+
+}
+
+.Control p {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #e0e0e0;
+    margin-right: auto;
+    margin-left: 2rem;
+
+}
+
+.Control button {
+    width: 10rem;
+    align-self: center;
+    padding: 1rem;
+    border: none;
+    font-family: inherit;
+    font-weight: bold;
+    font-size: 1.3rem;
+    border-radius: 3px;
+    cursor: pointer;
+    background-color: #e0e0e0;
+    color: #212121;
+    display: inline-block;
+    transition: all .2s;
+    margin-left: 1rem;
+}
+
+.Control button:hover {
+    box-shadow: 0px 1rem 2rem rgba(0, 0, 0, 0.1);
+    transform: translateY(-3px);
+    background-color: #bdbdbd;
+
+
+}
+
+.Control button:active {
+    box-shadow: 0px .5rem 1rem rgba(0, 0, 0, 0.1);
+    transform: translateY(-1px);
+
+}
+
+.Control button:focus {
+    outline: none;
+}
+
+[disabled] {
+    background-color: #616161 !important;
+
+}
