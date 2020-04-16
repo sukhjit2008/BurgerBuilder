@@ -8,6 +8,7 @@ const OrderSummery = props => {
       </li>
     );
   });
+
   return (
     <div className="OrderSummery">
       <h3>Your Order</h3>

@@ -4,6 +4,9 @@ import Burger from "../../Burger/Burger";
 import BuildControls from "../../Burger/BuildControls/BuildControls";
 import Model from "../../components/UI/Model";
 import OrderSummery from "../../Burger/OrderSummery/OrderSummery";
+import axios from "../../axios";
+import Loader from "../../components/UI/Loader/Loader";
+import Error from "../../components/UI/Error/Error";
 
 const INGREIENTS_PRICE = {
   cheese: 1,
@@ -13,7 +16,6 @@ const INGREIENTS_PRICE = {
 };
 
 class BurgerBuilder extends Component {
-  //State
   state = {
     ingredients: {
       cheese: 0,
@@ -23,8 +25,13 @@ class BurgerBuilder extends Component {
     },
     totalPrice: 5,
     showCheckOutButton: false,
-    hideUI: true
+    hideUI: true,
+    loader: false,
+    error: null,
+    hideOrderSummery: false
   };
+
+  componentDidUpdate = () => {};
   //To add ingredients
   onIngredientAdded = type => {
     const oldCount = this.state.ingredients[type];
@@ -39,7 +46,6 @@ class BurgerBuilder extends Component {
   };
   //To remove ingredients
   onIngredientRemoved = type => {
-    console.log(type);
     const oldCount = this.state.ingredients[type];
     if (oldCount <= 0) {
       return;
@@ -71,7 +77,32 @@ class BurgerBuilder extends Component {
     this.setState({ hideUI: true });
   };
   onContinueButtenClicked = () => {
-    alert("Send the order");
+    this.setState({ loader: true });
+    const order = {
+      ingredients: this.state.ingredients,
+      name: "Sukhjit Singh",
+      address: {
+        street: "1 mainStreet",
+        zipCode: 13455,
+        city: "calgary",
+        country: "canada"
+      },
+      email: "minda@gmail.com",
+      deliveryMethod: "fast"
+    };
+    axios
+      .post("/orders.json", order)
+      .then(response => {
+        this.setState({ loader: false });
+        this.setState({ hideOrderSummery: true });
+        setInterval(() => {
+          this.setState({ hideUI: true });
+        }, 2000);
+      })
+      .catch(err => {
+        this.setState({ loader: false });
+        this.setState({ error: err.message });
+      });
   };
   render() {
     //To disable the remove button to aviod negative values
@@ -79,20 +110,35 @@ class BurgerBuilder extends Component {
     for (let key in disabledInfo) {
       disabledInfo[key] = disabledInfo[key] <= 0;
     }
+    let summery;
+    if (this.state.loader) {
+      summery = <Loader />;
+    } else if (!this.state.error && !this.state.hideOrderSummery) {
+      summery = (
+        <OrderSummery
+          ingredients={this.state.ingredients}
+          toggleUIWithCloseButton={this.toggleUIWithCloseButton}
+          onContinueButtenClicked={this.onContinueButtenClicked}
+          totalPrice={this.state.totalPrice}
+        />
+      );
+    } else if (this.state.error) {
+      summery = <Error error={this.state.error} />;
+    } else if (this.state.hideOrderSummery) {
+      summery = <div>Congratulation Your Order Submitted!</div>;
+    }
+
     return (
       <Aux className="Aux">
         <Model
           hideUI={this.state.hideUI}
           toggleUIWithCloseButton={this.toggleUIWithCloseButton}
         >
-          <OrderSummery
-            ingredients={this.state.ingredients}
-            toggleUIWithCloseButton={this.toggleUIWithCloseButton}
-            onContinueButtenClicked={this.onContinueButtenClicked}
-            totalPrice={this.state.totalPrice}
-          />
+          {summery}
         </Model>
+        {this.state.error}
         <Burger ingredients={this.state.ingredients} />
+
         <BuildControls
           totalPrice={this.state.totalPrice}
           onIngredientAdded={this.onIngredientAdded}
@@ -101,6 +147,7 @@ class BurgerBuilder extends Component {
           showCheckOutButton={this.state.showCheckOutButton}
           toggleUI={this.toggleUI}
         />
+        <Error error={this.state.error} />
       </Aux>
     );
   }

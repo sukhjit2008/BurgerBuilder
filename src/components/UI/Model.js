@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Backdrop from "./Backdrop";
 import Aux from "../HOC/Aux";
 import "./Model.css";
 const Model = props => {
+  useEffect(() => {}, [props.hideUI]);
   return (
     <Aux>
       <Backdrop

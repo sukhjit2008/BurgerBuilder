@@ -7,13 +7,13 @@ class Layout extends Component {
   state = {
     hideSideBar: true
   };
+  //Show sidebar
   onClickShowSideBar = () => {
     this.setState({ hideSideBar: false });
   };
+  //Hide sidebar
   onClickHideSideBar = () => {
     this.setState({ hideSideBar: true });
-    console.log("toolbar");
-    console.log(this.state.hideSideBar);
   };
 
   render() {
